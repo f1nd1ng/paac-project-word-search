@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>Document</title>
+    <script>
+        var word = "";
+        var wordList = ["ORION","SCORPIUS","ARIES","CEPHEUS","AQUILA","OPHIUCHUS","AURIGA","ANTLIA"];
+        var c = wordList.length;
+        var l=c;
+        var nodeList = [];
+
+        window.onload = function(){
+            
+            while(l--){
+                document.getElementById("remaining").innerHTML +='<button class="button button5 round" id="'+l+'"></button>';
+            }
+
+
+            for(let node of document.getElementsByTagName("td")){
+       
+                node.onclick = function(){
+                    if(node.className == ""){
+                        node.className = "selected";
+                        nodeList.push(node);
+                    }
+                    else{
+                        node.className = "";
+                        nodeList.pop();
+                    }
+                }
+
+                if(node.textContent!="")continue;
+                let charCode = Math.round(65+Math.random()*25);
+                node.textContent = String.fromCharCode(charCode);
+            }
+        }
+
+        function wordChecker() {
+            for(let node of nodeList){
+                word+=node.textContent;
+            }
+
+            if(wordList.includes(word)){
+                c--;
+                const randomColor = Math.floor(Math.random()*16777215).toString(16);
+                for(let node of nodeList){
+                    console.log(node)
+                    node.className = "selected"+c.toString();
+                    node.style.backgroundColor = "#"+randomColor;
+                }
+                document.getElementById("remaining").removeChild(document.getElementById(c));
+            }
+            else{
+                for(let node of nodeList){
+                    node.style.backgroundColor = "red"
+                    setTimeout(
+                        function(){
+                            node.style.backgroundColor = "";
+                            node.className="";
+                    },1000);
+                }
+            }
+            word = "";
+            nodeList = [];
+        }
+    </script>
+    <style>
+        .main{
+            text-align:center;
+            padding:3% 35% 1% 35%;
+            font-size: large;
+        }
+        .round{
+            border: none;
+            color: white;
+            background-color: grey;
+            padding: 8px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            border-radius: 50%;
+            margin-left: 5px; 
+        }
+        .word{
+            height:75px;
+            width:200px;
+            font-size: large;
+        }
+
+        td {
+            border: 1px solid black;
+            width:50px;
+            height: 50px;
+            text-align: center;
+        }
+        td.selected {
+            background-color: aqua;
+        }
+        /* @media screen and (max-width: 780px) {
+        
+        } */
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="./constellations.html">ASTROGAMES</a>
+          </div>
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="./constellations.html">Constellations</a></li>
+            <li><a href="./galaxies.html">Galaxies</a></li>
+            <li><a href="./asteroids.html">Asteroids</a></li>
+            <li><a href="./stars.html">Stars</a></li>
+            <li><a href="./nebulae.html">Nebulae</a></li>
+          </ul>
+        </div>
+      </nav>
+
+      <div class="main">
+    <table>
+        <tr>
+            <td>S</td>
+            <td>O</td>
+            <td>P</td>
+            <td>H</td>
+            <td>I</td>
+            <td>U</td>
+            <td>C</td>
+            <td>H</td>
+            <td>U</td>
+            <td>S</td>
+        </tr>
+        <tr>
+            <td>C</td>
+            <td>A</td>
+            <td>O</td>
+            <td>C</td>
+            <td>E</td>
+            <td>P</td>
+            <td>H</td>
+            <td>E</td>
+            <td>U</td>
+            <td>S</td>
+        </tr>
+        <tr>
+            <td>O</td>
+            <td>G</td>
+            <td>R</td>
+            <td>A</td>
+            <td>I</td>
+            <td>L</td>
+            <td>T</td>
+            <td>N</td>
+            <td>A</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>R</td>
+            <td>I</td>
+            <td>I</td>
+            <td>A</td>
+            <td>L</td>
+            <td>I</td>
+            <td>U</td>
+            <td>Q</td>
+            <td>A</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>P</td>
+            <td>R</td>
+            <td>O</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>I</td>
+            <td>U</td>
+            <td>N</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>S</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>U</td>
+            <td>A</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>E</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>S</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>I</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>R</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>A</td>
+            <td></td>
+            <td></td>
+        </tr>
+    </table><br>
+    <div id="remaining">
+        Words remaining:
+        <br>
+    </div> 
+        <br>
+    <button onclick="wordChecker()" class="word">Enter word</button>
+</div>
+</body>
+</html>
